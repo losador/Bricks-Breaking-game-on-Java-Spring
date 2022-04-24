@@ -30,8 +30,8 @@ h1 {
     margin-left: calc(45% + 100px);
     text-align: center;
     background-color: rgba(0,0,0, 0.5);
-    min-width: 10%;
-    width: 10%;
+    min-width: 230px;
+    width: 230px;
     min-height: 50%;
     height: 50%;
     border-radius: 15px;
@@ -68,8 +68,8 @@ h1 {
     margin-left: calc(45% + 100px);
     text-align: center;
     background-color: rgba(0,0,0, 0.5);
-    min-width: 10%;
-    width: 10%;
+    min-width: 230px;
+    width: 230px;
     min-height: 50%;
     height: 50%;
     border-radius: 15px;
@@ -83,45 +83,29 @@ h1 {
     padding: 0px;
 }
 
-.button {
+a:hover {
+    cursor: pointer;
+}
+
+button {
     display: inline-block;
     border-radius: 4px;
-    background-color: white;
     border: none;
-    color: black;
+    color: #bbbbbb;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 30px;
+    font-size: 22px;
     padding: 20px;
     width: 180px;
     height: 70px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
-}
-.button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+    background-color: rgba(0,0,0, 0.5);
 }
 
-.button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.button:hover span {
-    padding-right: 25px;
-}
-
-.button:hover span:after {
-    opacity: 1;
-    right: 0;
+button:hover {
+    color: white;
 }
 
 h2 {

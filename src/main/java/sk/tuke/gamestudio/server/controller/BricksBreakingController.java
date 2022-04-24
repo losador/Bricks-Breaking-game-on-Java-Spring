@@ -1,13 +1,17 @@
 package sk.tuke.gamestudio.server.controller;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import sk.tuke.gamestudio.game.core.Color;
 import sk.tuke.gamestudio.game.core.Field;
 import sk.tuke.gamestudio.game.core.GameState;
+
+import java.awt.*;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)
@@ -30,19 +34,32 @@ public class BricksBreakingController{
     @RequestMapping
     public String bricks(@RequestParam(required = false) Integer row, @RequestParam(required = false) Integer column){
         if(row != null && column != null && field.getState() != GameState.FAILED) {
-            field.markTiles(row, column);
-            field.deleteTiles();
-            field.updateField();
-            field.isFailed();
-            if(field.isSolved()){
-                field.generateTiles();
-                //services
-            }
-            if(field.getState() == GameState.FAILED){
-                return "failed";
-            }
+            processCommand(row, column);
+            if (field.getState() == GameState.FAILED) return "failed";
         }
         return "bricks";
+    }
+
+    private void processCommand(Integer row, Integer column) {
+        field.markTiles(row, column);
+        field.deleteTiles();
+        field.updateField();
+        field.isFailed();
+        if(field.isSolved()){
+            field.generateTiles();
+            //services
+        }
+        field.isFailed();
+    }
+
+    @RequestMapping(value = "/field", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String field(@RequestParam(required = false) Integer row, @RequestParam(required = false) Integer column){
+        if(row != null && column != null) {
+            processCommand(row, column);
+            System.out.println(field.getScore());
+        }
+        return getHtmlField();
     }
 
     @RequestMapping("/new")
@@ -84,6 +101,8 @@ public class BricksBreakingController{
         return sb.toString();
     }
 
+    @RequestMapping(value = "/score", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
     public String getScore(){
         return String.valueOf(field.getScore());
     }

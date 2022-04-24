@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="/css/brickssheet.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/scripts/script.js"></script>
+
 </head>
+
 <body>
 
 <h1>
@@ -14,17 +18,21 @@
 </h1>
 
 <div class="game-panel">
-    <div class="field">
-        <span th:utext="${@bricksBreakingController.getHtmlField()}"></span>
+    <div class="field" id="field">
     </div>
     <div class="newButton">
-        <form action="/bricks/new">
-            <button>New game</button>
-        </form>
+        <table>
+            <form action="/bricks/init">
+                <button style="vertical-align: middle"><span>Back</span></button>
+            </form>
+            <form action="/bricks/new">
+                <button style="vertical-align: middle"><span>New game</span></button>
+            </form>
+        </table>
     </div>
 </div>
 <div class="info">
-    <h2>Your score: <span th:utext="${@bricksBreakingController.getScore()}"></span></h2><br><br>
+    <h2>Your score: <span id="score"></span></h2><br><br>
     <h2 class="wands" th:utext="${@bricksBreakingController.getWands()}"></h2>
 </div>
 <div class="rules">
