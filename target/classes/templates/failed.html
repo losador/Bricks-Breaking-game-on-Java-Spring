@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/brickssheet.css"/>
+</head>
+<body>
+
+<h1>
+    BricksBreaking
+</h1>
+
+<div class="game-panel">
+    <div class="field">
+        <span th:utext="${@bricksBreakingController.getHtmlField()}"></span>
+    </div>
+    <div class="failed">
+        <span>You failed, try again!</span>
+    </div>
+    <div class="newButton">
+        <form action="/bricks/new">
+            <button>New game</button>
+        </form>
+    </div>
+</div>
+<div class="info">
+    <h2>Your score: <span th:utext="${@bricksBreakingController.getScore()}"></span></h2><br><br>
+    <h2 th:utext="${@bricksBreakingController.getWands()}"></h2>
+</div>
+<div class="rules">
+    <h3>Destroy all the bricks by clicking them in groups of the same color.
+        The more you get at once, the higher the score.
+        The only way to remove a single brick is to zap it with a magic wand.</h3>
+</div>
+
+</body>
+</html>
