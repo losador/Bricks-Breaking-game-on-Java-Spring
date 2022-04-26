@@ -40,6 +40,15 @@ h1 {
     justify-content: center;
 }
 
+.scores {
+    float: right;
+    clear: left;
+    margin-left: 70%;
+    font-size: 30px;
+    width: 250px;
+    height: 700px;
+}
+
 .wands {
     text-align: center;
 }

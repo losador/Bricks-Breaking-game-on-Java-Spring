@@ -1,9 +1,18 @@
-let Name
+let Name = ""
+let gameName = "BricksBreaking"
 
 $(document).ready(function () {
     refreshField("/bricks/field");
+    writeScores();
     updatePoints();
+    getName();
 });
+
+function getName(){
+    $.get('/bricks/name', function (response){
+       Name = response;
+    });
+}
 
 function updatePoints(){
     $.get('/bricks/score', function(response){
@@ -24,14 +33,38 @@ function refreshField(url){
                 updatePoints();
                 refreshField(url);
                 updatePoints();
+                isSolved();
             });
         })
     });
 }
 
+function isSolved(){
+    $.get('/bricks/state', function (response){
+        if(response === 'solved'){
+            $.get('/bricks/score', function (response){
+                var score = new Object();
+                score.player = Name;
+                score.game = gameName;
+                score.points = response;
+                score.playedOn = new Date();
+                $.ajax({
+                    url: '/api/score',
+                    type: 'POST',
+                    data: JSON.stringify(score),
+                    contentType: "application/json"
+                });
+            });
+            setTimeout(function () {
+                writeScores();
+            }, 1000);
+        }
+    });
+}
+
 function create(){
-    Name = document.getElementById("n").value;
-    if(Name == ""){
+    var name = document.getElementById("n").value;
+    if(name == ""){
         alert("You must write down your name!");
         return;
     }
@@ -52,5 +85,17 @@ function create(){
         return;
     }
     
-    document.location.href = "/bricks" + "/create?y=" + height + "&x=" + width;
+    document.location.href = "/bricks" + "/create?y=" + height + "&x=" + width + "&name=" + name;
+}
+
+function writeScores(){
+    $.ajax({
+        url: "/api/score/BricksBreaking",
+    }).done(function (json) {
+        $("#scoreTable tbody").empty();
+        for (var i = 0; i < json.length; i++) {
+            var score = json[i];
+            $("#scoreTable tbody").append($("<tr><td>" + score.player + "<td>" + score.points + "<td>"));
+        }
+    });
 }

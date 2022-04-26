@@ -19,6 +19,7 @@ import java.awt.*;
 public class BricksBreakingController{
 
     private Field field;
+    private String username;
 
     @RequestMapping("/init")
     public String init(){
@@ -26,8 +27,10 @@ public class BricksBreakingController{
     }
 
     @RequestMapping("/create")
-    public String initializeField(@RequestParam int y, @RequestParam int x){
+    public String initializeField(@RequestParam int y, @RequestParam int x, @RequestParam String name){
+        this.username = name;
         field = new Field(y, x);
+        field.setState(GameState.PLAYING);
         return "bricks";
     }
 
@@ -46,8 +49,14 @@ public class BricksBreakingController{
         field.updateField();
         field.isFailed();
         if(field.isSolved()){
+            field.setState(GameState.STOPPED);
             field.generateTiles();
-            //services
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            field.setState(GameState.PLAYING);
         }
         field.isFailed();
     }
@@ -65,6 +74,7 @@ public class BricksBreakingController{
     @RequestMapping("/new")
     public String newGame(){
         field = new Field(12, 12);
+        field.setState(GameState.PLAYING);
         return "bricks";
     }
 
@@ -105,6 +115,20 @@ public class BricksBreakingController{
     @ResponseBody
     public String getScore(){
         return String.valueOf(field.getScore());
+    }
+
+    @RequestMapping(value = "/state", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String getState(){
+        if(field.getState() == GameState.PLAYING) return "playing";
+        else if(field.getState() == GameState.FAILED) return "failed";
+        else return "solved";
+    }
+
+    @RequestMapping(value = "/name", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String getName(){
+        return this.username;
     }
 
     public String getWands(){
