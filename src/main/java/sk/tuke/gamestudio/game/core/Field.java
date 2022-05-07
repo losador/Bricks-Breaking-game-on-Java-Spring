@@ -51,15 +51,18 @@ public class Field {
             }
         }
 
+        int deleted = 0;
+
         for(int i = 0; i < ROWS; i++){
             for(int j = 0; j < COLUMNS; j++){
                 if(fieldArray[i][j].isMarked()) { //if tile is marked, unmark and delete it
                     fieldArray[i][j].unmark();
                     fieldArray[i][j].setTileColor(Color.NONE);
-                    this.score += 11;
+                    deleted++;
                 }
             }
         }
+        this.score += (3 * deleted) * deleted;
         this.tilesToDelete = 0;
     }
 

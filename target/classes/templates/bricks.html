@@ -14,9 +14,20 @@
 
 <body>
 
-<h1>
-    BricksBreaking
-</h1>
+<input type="hidden" name="fieldWidth" id="width" value="">
+<input type="hidden" name="fieldWidth" id="height" value="">
+<input type="hidden" name="fieldWidth" id="name" value="">
+<input type="hidden" name="isUserLogged" id="is" value="">
+
+<div class="header">
+    <div class="account" id="ac">
+
+    </div>
+</div>
+
+<div class="bricksText">
+    <h1>BricksBreaking</h1>
+</div>
 
 <div class="game-panel">
     <div class="field" id="field">
@@ -26,33 +37,59 @@
             <form action="/bricks/init">
                 <button style="vertical-align: middle"><span>Back</span></button>
             </form>
-            <form action="/bricks/new">
-                <button style="vertical-align: middle"><span>New game</span></button>
-            </form>
+            <button class="newGameButton" style="vertical-align: middle" onclick="newGame()" id="new"><span>New game</span></button>
         </table>
     </div>
 </div>
-<div class="info">
-    <h2>Your score: <span id="score"></span></h2><br><br>
-    <h2 class="wands" th:utext="${@bricksBreakingController.getWands()}"></h2>
+<div class="content">
+    <div class="main">
+        <div class="info">
+            <h2>Your score: <span id="score"></span></h2><br><br>
+            <div class="wands" id="wands"></div>
+        </div>
+        <div class="rules">
+            <h3>Destroy all the bricks by clicking them in groups of the same color.
+                The more you get at once, the higher the score.
+                The only way to remove a single brick is to zap it with a magic wand.</h3>
+        </div>
+    </div>
+    <div class="scores">
+        <table id="scoreTable" class="display">
+            <thead>
+            <tr>
+                <th>Player</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </div>
-<div class="rules">
-    <h3>Destroy all the bricks by clicking them in groups of the same color.
-        The more you get at once, the higher the score.
-        The only way to remove a single brick is to zap it with a magic wand.</h3>
-</div>
-<div class="scores">
-    <table id="scoreTable" class="display">
-        <thead>
-        <tr>
-            <th>Player</th>
-            <th>Points</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
+
+<section class="content-item" id="comments">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8" id="col">
+                <form id="comForm">
+                    <h3 class="newCom">New Comment</h3>
+                    <div class="col">
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
+                        </div>
+                    </div>
+                    <button id="addCom" type="button" class="submitBtn" onclick="addComment()">Submit</button>
+                    <button type="button" onclick="writeComments()" id="wButton">Show comments</button>
+                </form>
+
+                <div class="media" id="media">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 
 
 </body>

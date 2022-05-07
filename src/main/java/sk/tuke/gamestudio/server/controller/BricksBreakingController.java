@@ -22,13 +22,23 @@ public class BricksBreakingController{
     private String username;
 
     @RequestMapping("/init")
-    public String init(){
+    public String init(@RequestParam(required = false) String name) {
+        if(name != null) this.username = name;
         return "init";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
+
     @RequestMapping("/create")
-    public String initializeField(@RequestParam int y, @RequestParam int x, @RequestParam String name){
-        this.username = name;
+    public String initializeField(@RequestParam int y, @RequestParam int x){
         field = new Field(y, x);
         field.setState(GameState.PLAYING);
         return "bricks";
@@ -131,11 +141,25 @@ public class BricksBreakingController{
         return this.username;
     }
 
+    @RequestMapping(value = "/wands", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
     public String getWands(){
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < field.getSingleDeleteCount(); i++){
             sb.append("<img src='/images/bulb.png'>\n");
         }
         return sb.toString();
+    }
+
+    @RequestMapping(value = "/height", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String getFieldHeight(){
+        return String.valueOf(field.getROWS());
+    }
+
+    @RequestMapping(value = "/width", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String getFieldWidth(){
+        return String.valueOf(field.getCOLUMNS());
     }
 }

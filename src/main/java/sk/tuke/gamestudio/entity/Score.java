@@ -34,6 +34,8 @@ public class Score implements Serializable {
         this.playedOn = playedOn;
     }
 
+
+
     @Override
     public String toString() {
         return  "Game: " + game +
