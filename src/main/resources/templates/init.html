@@ -11,7 +11,8 @@
 </head>
 <body>
 
-<h1>BricksBreaking</h1>
+<input type="hidden" name="fieldWidth" id="name" value="">
+<input type="hidden" name="isUserLogged" id="is" value="">
 
 <div class="header">
     <div class="account" id="ac">
@@ -19,13 +20,16 @@
     </div>
 </div>
 
+<h1 class="brt">BricksBreaking</h1>
+
 <div class="content">
     <br>
-    <h2>Enter size of field(from 1 to 20)</h2><br><br>
-    <label for="w">Width</label><br>
-    <input class="width" type="text" id="w"><br><br>
-    <label for="h">Height</label><br>
-    <input class="height" type="text" id="h"><br><br><br>
+    <div class="text">
+        <h2>Enter size of field(from 1 to 20)</h2>
+    </div>
+    <br><br>
+    <input class="width" type="text" id="w" placeholder="Width"><br><br><br>
+    <input class="height" type="text" id="h" placeholder="Height"><br><br><br><br>
     <button class="button" onclick="create()" style="vertical-align: middle"><span>PLAY</span></button>
 </div>
 

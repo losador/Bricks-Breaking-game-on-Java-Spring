@@ -33,11 +33,16 @@ body {
     top: 0 !important;
     left: 0 !important;
     border: none !important;
-    background-color: rgb(56, 56, 56) !important;
+    background-color: rgba(35, 50, 54, 0.87) !important;
     color: #f9f6e4 !important;
     z-index: 1000 !important;
     display: flex;
     align-items: center;
+    vertical-align: middle;
+}
+
+.main-text {
+    width: 100%;
 }
 
 .bricksText{
@@ -46,11 +51,32 @@ body {
 
 .account {
     margin-left: 14px;
+    float: left;
 }
 
 .account span{
-    font-size: 30px;
+    font-size: 35px;
     font-family: AsherRegular, sans-serif;
+}
+
+.but{
+    width: 97px;
+    margin-right: 14px;
+    font-size: 35px;
+    float: right;
+}
+
+.but a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.but a:hover {
+    transition: 3ms;
+    color: aquamarine;
+    background-color: #212529;
+    border-radius: 6px;
 }
 
 h1 {
@@ -449,5 +475,44 @@ h3.newCom {
     font-family: Nasalization, sans-serif;
     font-size: 35px;
     color: #bbbbbb;
+}
+
+.rating-area {
+    overflow: hidden;
+    width: 400px;
+    margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+    display: none;
+}
+.rating-area:not(:checked) > label {
+    float: right;
+    width: 80px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 32px;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+    content: url("../images/nonColoredStar.png");
+}
+.rating-area > input:checked ~ label {
+    content: url("../images/coloredStar.png");
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+    content: url("../images/coloredStar.png");
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+    content: url("../images/coloredStar.png");
+}
+.rate-area > label:active {
+    position: relative;
 }
 

@@ -13,7 +13,23 @@ $(document).ready(function () {
     getFieldHeight();
     getFieldWidth();
     //getLoggedUser();
+
 });
+
+function addButton(){
+    st = document.getElementById("is").value;
+    if(st === "true"){
+        $("#but").empty().append("<a id=\"log\" onclick=\"logout()\">logout</a>");
+    } else {
+        $("#but").empty().append("<a id=\"log\" onclick='loginMain()'>login</a>");
+    }
+}
+
+function loginMain(){
+    document.getElementById("is").value = "false";
+    document.getElementById("name").value = "Guest";
+    document.location.href = "/bricks/login";
+}
 
 function getLoggedUser(){
     $("#ac").empty();
@@ -32,6 +48,7 @@ function getName(){
        document.getElementById("name").value = response;
     }).done(function (){
         getLoggedUser();
+        addButton();
     });
 
 }
@@ -110,6 +127,12 @@ function isFailed(){
     });
 }
 
+function logout(){
+    document.getElementById("name").value = "";
+    document.getElementById("is").value = "false";
+    document.location.href = "/bricks/init?name=";
+}
+
 function newGame(){
     console.log("new");
     var height = document.getElementById("height").value;
@@ -148,9 +171,13 @@ function create(){
         return;
     }
 
-    if(confirm("To add comments, rating and save your score you need to log in. Do you want to continue to log in window?")){
-        document.location.href = "/bricks/login";
-    } else{
+    if(document.getElementById("is").value === "false") {
+        if (confirm("To add comments, rating and save your score you need to log in. Do you want to continue to log in window?")) {
+            document.location.href = "/bricks/login";
+        } else {
+            document.location.href = "/bricks" + "/create?y=" + height + "&x=" + width;
+        }
+    } else {
         document.location.href = "/bricks" + "/create?y=" + height + "&x=" + width;
     }
 }
@@ -207,6 +234,7 @@ async function addUser(){
 }
 
 function addComment(){
+    if(document.getElementById("is").value === "false") return;
     var message = document.getElementById('message').value;
     document.getElementById('message').value = "";
     if (message && message.length > 0) {
@@ -230,6 +258,7 @@ function addComment(){
 }
 
 function writeScores(){
+    if(document.getElementById("is").value === "false") return;
     $.ajax({
         url: "/api/score/BricksBreaking",
     }).done(function (json) {
