@@ -499,7 +499,7 @@ span#avg{
 
 .rating-area {
     margin-top: 13vh;
-    margin-left: calc(35vh - 200px);
+    margin-left: calc(35vh - 240px);
     overflow: hidden;
     width: 400px;
 }
@@ -508,36 +508,24 @@ span#avg{
 }
 .rating-area:not(:checked) > label {
     float: right;
-    width: 80px;
+    width: 72px;
     padding: 0;
     cursor: pointer;
-    font-size: 32px;
-    line-height: 32px;
-    color: lightgrey;
-    text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
-    width: 80px;
+    width: 72px;
+    height: 72px;
     content: url("../images/nonColoredStar.png");
 }
 .rating-area > input:checked ~ label {
-    width: 80px;
+    width: 72px;
+    height: 72px;
     content: url("../images/coloredStar.png");
 }
 .rating-area:not(:checked) > label:hover,
 .rating-area:not(:checked) > label:hover ~ label {
-    width: 80px;
+    width: 72px;
+    height: 72px;
     content: url("../images/coloredStar.png");
-}
-.rating-area > input:checked + label:hover,
-.rating-area > input:checked + label:hover ~ label,
-.rating-area > input:checked ~ label:hover,
-.rating-area > input:checked ~ label:hover ~ label,
-.rating-area > label:hover ~ input:checked ~ label {
-    width: 80px;
-    content: url("../images/coloredStar.png");
-}
-.rate-area > label:active {
-    position: relative;
 }
 

@@ -270,6 +270,19 @@ async function addUser(){
         return;
     }
 
+    let code = await $.get('/api/send/' + email);
+    let userCode = prompt("We just send you verification code to your email: '" + email + "' write it here");
+    let count = 0;
+
+    while(userCode !== code){
+        if(count === 2){
+            alert("Too many tries, goodbye:)<3");
+            return;
+        }
+        userCode = prompt("Invalid code! Try again");
+        count++;
+    }
+
     var u = {
         email: email,
         login: name,
@@ -396,5 +409,3 @@ async function login(){
     document.location.href = "/bricks/init?name=" + login;
 
 }
-
-

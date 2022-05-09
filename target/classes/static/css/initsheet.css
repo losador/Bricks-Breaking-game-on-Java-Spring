@@ -132,45 +132,54 @@ input::placeholder {
     padding-left: 10px;
 }
 
-.button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: white;
-    border: none;
-    color: black;
+.btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    width: 180px;
+    height: 60px;
     text-align: center;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-transform: uppercase;
     font-family: AsherRegular, sans-serif;
     font-size: 30px;
-    padding: 20px;
-    width: 180px;
-    height: 70px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
 }
-.button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+.button:hover, .button:focus {
+    color: #fff;
+    outline: 0;
 }
 
-.button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
+.button {
+    border-color: aquamarine;
+    color: #fff;
+    box-shadow: 0 0 40px 40px aquamarine inset, 0 0 0 0 aquamarine;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
 }
-
-.button:hover span {
-    padding-right: 25px;
-}
-
-.button:hover span:after {
-    opacity: 1;
-    right: 0;
+.button:hover {
+    box-shadow: 0 0 10px 0 aquamarine inset, 0 0 10px 4px aquamarine;
 }
 
 label{
