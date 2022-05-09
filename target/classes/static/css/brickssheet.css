@@ -501,14 +501,18 @@ span#avg{
     margin-top: 13vh;
     margin-left: calc(35vh - 240px);
     overflow: hidden;
-    width: 400px;
+    width: 360px;
+    height: 72px;
 }
 .rating-area:not(:checked) > input {
+    width: 72px;
+    height: 72px;
     display: none;
 }
 .rating-area:not(:checked) > label {
     float: right;
     width: 72px;
+    height: 72px;
     padding: 0;
     cursor: pointer;
 }
