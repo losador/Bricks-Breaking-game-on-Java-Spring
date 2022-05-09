@@ -33,13 +33,43 @@ body {
     align-items: center;
 }
 
+.main-text {
+    width: 100%;
+}
+
+.bricksText{
+    margin-top: 54px;
+}
+
 .account {
     margin-left: 14px;
+    float: left;
 }
 
 .account span{
-    font-size: 30px;
+    font-size: 35px;
     font-family: AsherRegular, sans-serif;
+}
+
+.but{
+    width: 97px;
+    margin-right: 14px;
+    font-size: 35px;
+    float: right;
+}
+
+.but a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.but a:hover {
+    transition: 3ms;
+    color: aquamarine;
+    background-color: #212529;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .brt {

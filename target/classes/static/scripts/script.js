@@ -13,8 +13,14 @@ $(document).ready(function () {
     getFieldHeight();
     getFieldWidth();
     //getLoggedUser();
-
+    getAvgRate();
 });
+
+function getAvgRate(){
+    $.get('/api/rating/' + gameName, function (response){
+        $("#avg").empty().append("Avg. rate: " + response);
+    });
+}
 
 function addButton(){
     st = document.getElementById("is").value;
@@ -34,7 +40,7 @@ function loginMain(){
 function getLoggedUser(){
     $("#ac").empty();
     let name = document.getElementById("name").value;
-    if(name === ""){
+    if(name === "" || name === "Guest"){
         document.getElementById("is").value = "false";
         name = "Guest";
     } else {
@@ -46,9 +52,13 @@ function getLoggedUser(){
 function getName(){
     $.get('/bricks/name', function (response){
        document.getElementById("name").value = response;
+       if(response === ""){
+           document.getElementById("name").value = "Guest";
+       }
     }).done(function (){
         getLoggedUser();
         addButton();
+        checkRating();
     });
 
 }
@@ -116,6 +126,50 @@ function isSolved(){
     });
 }
 
+async function checkRating(){
+    let state = await $.get('/api/rating/' + gameName + '/' + document.getElementById("name").value);
+    if(state !== 0) {
+        showStars(state);
+    } else {
+        if(document.getElementById("is").value === "false"){
+            showStars(0);
+        }
+    }
+}
+
+async function setRating(rate){
+    if(document.getElementById("is").value === "false") return;
+    let state = await $.get('/api/rating/' + gameName + '/' + document.getElementById("name").value);
+    if(state !== 0) {
+        return;
+    }
+    var rating = new Object();
+    rating.player = document.getElementById("name").value;
+    rating.game = gameName;
+    rating.rate = rate;
+    rating.ratedOn = new Date();
+    $.ajax({
+        url: '/api/rating',
+        type: 'POST',
+        data: JSON.stringify(rating),
+        contentType: "application/json"
+    });
+    setTimeout(function () {
+        getAvgRate();
+        showStars(rate);
+    }, 1000);
+}
+
+function showStars(count){
+    $("#ra").empty();
+    for(var i = 0; i < count; i++){
+        $("#ra").append("<img src='/images/coloredStar.png'>");
+    }
+    for(var i = 0; i < 5-count; i++){
+        $("#ra").append("<img src='/images/nonColoredStar.png'>");
+    }
+}
+
 function isFailed(){
     $.get('/bricks/state', function (response){
         if(response == "failed"){
@@ -163,10 +217,10 @@ function create(){
         return;
     }
     if(width < 4 || height < 4){
-        alert("Field size must be greater than 1!");
+        alert("Field size must be greater than 4!");
         return
     }
-    if(width > 20 && height > 20){
+    if(width > 20 || height > 20){
         alert("Field size must be less than 20!");
         return;
     }

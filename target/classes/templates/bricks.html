@@ -93,17 +93,21 @@
         </div>
     </div>
 </section>
-<div class="rating-area">
-    <input type="radio" id="star-5" name="rating" value="5">
-    <label for="star-5" title="Оценка «5»"></label>
-    <input type="radio" id="star-4" name="rating" value="4">
-    <label for="star-4" title="Оценка «4»"></label>
-    <input type="radio" id="star-3" name="rating" value="3">
-    <label for="star-3" title="Оценка «3»"></label>
-    <input type="radio" id="star-2" name="rating" value="2">
-    <label for="star-2" title="Оценка «2»"></label>
-    <input type="radio" id="star-1" name="rating" value="1">
-    <label for="star-1" title="Оценка «1»"></label>
+
+<div class="rating">
+    <div class="rating-area" id="ra">
+        <input type="radio" id="star-5" name="rating" onclick="setRating(5)" value="5">
+        <label for="star-5" title="Rate: 5"></label>
+        <input type="radio" id="star-4" name="rating" onclick="setRating(4)" value="4">
+        <label for="star-4" title="Rate: 4"></label>
+        <input type="radio" id="star-3" name="rating" onclick="setRating(3)" value="3">
+        <label for="star-3" title="Rate: 3"></label>
+        <input type="radio" id="star-2" name="rating" onclick="setRating(2)" value="2">
+        <label for="star-2" title="Rate: 2"></label>
+        <input type="radio" id="star-1" name="rating" onclick="setRating(1)" value="1">
+        <label for="star-1" title="Rate: 1"></label>
+    </div><br>
+    <span id="avg" name="avg"></span>
 </div>
 
 </body>

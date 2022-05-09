@@ -316,6 +316,7 @@ table#scoreTable.display {
 #wButton {}
 
 .content-item {
+    float: left;
     min-width: 60vw;
     width: 60vw;
     padding:30px 0;
@@ -477,10 +478,25 @@ h3.newCom {
     color: #bbbbbb;
 }
 
+.rating {
+    width: 35vw;
+    height: 30vh;
+    float: right;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+span#avg{
+    font-size: 35px;
+    margin-left: calc(35vh - 200px);
+}
+
 .rating-area {
+    margin-top: 13vh;
+    margin-left: calc(35vh - 200px);
     overflow: hidden;
     width: 400px;
-    margin: 0 auto;
 }
 .rating-area:not(:checked) > input {
     display: none;
@@ -496,13 +512,16 @@ h3.newCom {
     text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
+    width: 80px;
     content: url("../images/nonColoredStar.png");
 }
 .rating-area > input:checked ~ label {
+    width: 80px;
     content: url("../images/coloredStar.png");
 }
 .rating-area:not(:checked) > label:hover,
 .rating-area:not(:checked) > label:hover ~ label {
+    width: 80px;
     content: url("../images/coloredStar.png");
 }
 .rating-area > input:checked + label:hover,
@@ -510,6 +529,7 @@ h3.newCom {
 .rating-area > input:checked ~ label:hover,
 .rating-area > input:checked ~ label:hover ~ label,
 .rating-area > label:hover ~ input:checked ~ label {
+    width: 80px;
     content: url("../images/coloredStar.png");
 }
 .rate-area > label:active {
