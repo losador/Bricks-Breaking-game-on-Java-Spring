@@ -15,6 +15,8 @@ import java.util.Date;
         query = "SELECT avg(r.rate) FROM Rating r WHERE r.game=:game")
 @NamedQuery( name = "Rating.getRating",
         query = "SELECT r.rate FROM Rating r WHERE r.game=:game AND r.player=:player")
+@NamedQuery( name = "Rating.updateRating",
+        query = "UPDATE Rating SET rate=:rate WHERE player=:player")
 @NamedQuery( name = "Rating.resetRating",
         query = "DELETE FROM Rating")
 @Data

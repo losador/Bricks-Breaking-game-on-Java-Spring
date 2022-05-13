@@ -126,22 +126,17 @@ function isSolved(){
 }
 
 async function checkRating(){
-    let state = await $.get('/api/rating/' + gameName + '/' + document.getElementById("name").value);
-    if(state !== 0) {
-        showStars(state);
-    } else {
-        if(document.getElementById("is").value === "false"){
-            showStars(0);
-        }
+    if (document.getElementById("is").value === "false") {
+        showStars(0);
     }
 }
 
 async function setRating(rate){
     if(document.getElementById("is").value === "false") return;
-    let state = await $.get('/api/rating/' + gameName + '/' + document.getElementById("name").value);
-    if(state !== 0) {
-        return;
-    }
+    // let state = await $.get('/api/rating/' + gameName + '/' + document.getElementById("name").value);
+    // if(state !== 0) {
+    //     return;
+    // }
     var rating = new Object();
     rating.player = document.getElementById("name").value;
     rating.game = gameName;
@@ -155,7 +150,7 @@ async function setRating(rate){
     });
     setTimeout(function () {
         getAvgRate();
-        showStars(rate);
+        //showStars(rate);
     }, 1000);
 }
 
