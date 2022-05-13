@@ -12,7 +12,6 @@ $(document).ready(function () {
     getName();
     getFieldHeight();
     getFieldWidth();
-    //getLoggedUser();
     getAvgRate();
 });
 

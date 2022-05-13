@@ -11,7 +11,7 @@ public class SendEmailService {
 
     @GetMapping("/{email}")
     public String sendEmail(@PathVariable String email){
-        int code = (int)(1000 + Math.random() * 10000);
+        int code = (int)(10000000 + Math.random() * 99999999);
         try {
             String message = "Your verification code to continue registration at BricksBreaking game is: " + code;
             sender.send("Verification code", message, "bricksbreakingkp@gmail.com", email);
