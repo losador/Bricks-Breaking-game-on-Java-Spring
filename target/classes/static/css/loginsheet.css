@@ -1,0 +1,176 @@
+@font-face {
+    font-family: 'AsherRegular';
+    src: url("../fonts/AsherPunkDemoVersion-ALZJ2.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #ffffff;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 12px;
+    font-family: AsherRegular, sans-serif;
+    color: #ffffff;
+    margin: 10px;
+    text-align: center;
+}
+
+input {
+    font-family: AsherRegular, sans-serif;
+    width: 60%;
+    height: 10%;
+    background: transparent;
+    border: none;
+    border-bottom: 4px solid #fff;
+    outline: none;
+    font-size: 40px;
+    color: white;
+}
+
+input:focus {
+    border-bottom: 4px solid aquamarine;
+}
+
+input::placeholder {
+    padding-left: 10px;
+}
+
+.fa {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    font-size: 18px;
+    color: #777;
+}
+
+.header {
+    position: fixed !important;
+    width: 100% !important;
+    height: 54px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    border: none !important;
+    background-color: rgba(35, 50, 54, 0.87) !important;
+    color: #f9f6e4 !important;
+    z-index: 1000 !important;
+    display: flex;
+    align-items: center;
+}
+
+.account {
+    margin-left: 14px;
+}
+
+.account span{
+    font-size: 30px;
+    font-family: AsherRegular, sans-serif;
+}
+
+.brt {
+    margin-top: 54px;
+}
+
+h1 {
+    text-align: center;
+    font-family: AsherRegular, sans-serif;
+    font-size:  130px;
+    margin: 0px;
+    padding: 0px;
+    color: aquamarine;
+}
+
+h2 {
+    text-align: center;
+    font-family: AsherRegular, sans-serif;
+    font-size: 44px;
+}
+
+label {
+    font-size: 38px;
+    text-align: left;
+}
+
+.content {
+    background-image: url("../images/initback.png");
+    margin: auto;
+    margin-top: 170px;
+    width: 750px;
+    height: 570px;
+    text-align: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    margin-top: 30px;
+    display: block;
+    align-items: center;
+}
+
+a {
+    color: aquamarine;
+}
+
+.btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    width: 180px;
+    height: 60px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: AsherRegular, sans-serif;
+    font-size: 25px;
+}
+.button:hover, .button:focus {
+    color: #fff;
+    outline: 0;
+}
+
+.button {
+    border-color: aquamarine;
+    color: #fff;
+    box-shadow: 0 0 40px 40px aquamarine inset, 0 0 0 0 aquamarine;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+.button:hover {
+    box-shadow: 0 0 10px 0 aquamarine inset, 0 0 10px 4px aquamarine;
+}
+
+label{
+    text-align: left;
+}
+
+.text {
+    margin-top: 60px;
+}
+

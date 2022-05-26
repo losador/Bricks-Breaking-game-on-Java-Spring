@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BricksBreaking</title>
+    <link rel="stylesheet" href="/css/initsheet.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/scripts/script.js"></script>
+    <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
+
+</head>
+<body>
+
+<input type="hidden" name="fieldWidth" id="name" value="">
+<input type="hidden" name="isUserLogged" id="is" value="">
+
+<div class="header">
+    <div class="main-text">
+        <div class="account" id="ac">
+        </div>
+        <div class="but" id="but">
+        </div>
+    </div>
+</div>
+
+<h1 class="brt">BricksBreaking</h1>
+
+<div class="content">
+    <br>
+    <div class="text">
+        <h2>Enter size of field(from 4 to 20)</h2>
+    </div>
+    <br><br>
+    <input class="width" type="text" id="w" placeholder="Width"><br><br><br>
+    <input class="height" type="text" id="h" placeholder="Height"><br><br><br><br>
+    <div class="btn">
+        <button class="button" onclick="create()"><span>PLAY</span></button>
+    </div>
+</div>
+
+</body>
+</html>
