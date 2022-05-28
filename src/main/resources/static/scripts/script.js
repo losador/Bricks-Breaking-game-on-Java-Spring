@@ -119,7 +119,7 @@ function addScore() {
 
 function isSolved(){
     $.get('/bricks/state', function (response){
-        if(response === 'solved'){
+        if(response === 'solved' && document.getElementById("is").value === "true"){
             addScore();
         }
     });
